@@ -34,4 +34,9 @@ export class MainScene extends Phaser.Scene {
     this.background.scale = 1.5;
     this.skyMan.scale = 0.1;
   }
+  
+  //金币🌧
+  coinRain():void {}
+
+  update():void {}
 }
