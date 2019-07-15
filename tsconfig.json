@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
+    "target": "ES6",
     "module": "commonjs",
-    "target": "es5",
-    "noEmitHelpers": true,
-    "sourceMap": false
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "strict": false
+  }
 }
