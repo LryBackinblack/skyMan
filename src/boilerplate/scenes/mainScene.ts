@@ -7,7 +7,8 @@
 export class MainScene extends Phaser.Scene {
   private skyMan: Phaser.GameObjects.Sprite;
   private background: Phaser.GameObjects.Sprite;
-
+  private screenWidth:number;
+  private screenHeight:number;
   constructor() {
     super({
       key: "MainScene"
@@ -15,16 +16,18 @@ export class MainScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image("skyMan", "./src/boilerplate/assets/skyMan.jpg");
+    this.load.image("skyMan", "./src/boilerplate/assets/skyMan.png");
     this.load.image("background", "./src/boilerplate/assets/bg.jpg");
-
+    this.load.image("coin", "./src/boilerplate/assets/coin.png");
   }
 
   create(): void {
-    const screenWidth:number = this.game.config.width as number;
-    const screenHeight:number = this.game.config.height as number;
+    this.screenWidth = this.game.config.width as number;
+    this.screenHeight  = this.game.config.height as number;
+
     this.background = this.add.sprite(0, 0, "background");
-    this.skyMan = this.add.sprite(screenWidth / 2, screenHeight / 1.1, "skyMan").setInteractive();
+
+    this.skyMan = this.add.sprite(this.screenWidth / 2, this.screenHeight / 1.1, "skyMan").setInteractive();
     this.input.setDraggable(this.skyMan);
 
     this.skyMan.on('drag', function (pointer, dragX, dragY) {
@@ -33,6 +36,8 @@ export class MainScene extends Phaser.Scene {
 
     this.background.scale = 1.5;
     this.skyMan.scale = 0.1;
+    console.log(this.game)
+    this.coinRain()
   }
   
   //金币🌧
